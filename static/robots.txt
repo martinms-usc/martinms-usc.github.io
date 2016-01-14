@@ -1,0 +1,3 @@
+User-agent: *
+Sitemap: http://martinms-usc.github.io/sitemap.xml
+Disallow: /ghost/
