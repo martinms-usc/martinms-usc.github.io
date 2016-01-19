@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>React Lifecycle Methods Cheat Sheet</title>
+    <title>Child Processes in Node</title>
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
@@ -33,25 +33,27 @@
 <meta name="msapplication-config" content="/assets/img/browserconfig.xml?v=wAAv6Wqe6l">
 <meta name="theme-color" content="#e74c3c">
     <link rel="stylesheet" type="text/css" href="../assets/css/uno-zen.css?v=47e1fae645" />
-    <link rel="canonical" href="http://martinms-usc.github.io/react/" />
+    <link rel="canonical" href="http://martinms-usc.github.io/child-process/" />
     <meta name="referrer" content="origin" />
     
     <meta property="og:site_name" content="Michael Martin" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="React Lifecycle Methods Cheat Sheet" />
-    <meta property="og:description" content="React’s lifecycle methods give us specific points at which to tap into the ‘lifecycle’ of a component (and it’s children) and provide an organized structure in which to interact with components as they are mounted, rendered, updated, and..." />
-    <meta property="og:url" content="http://martinms-usc.github.io/react/" />
-    <meta property="og:image" content="http://martinms-usc.github.io/content/images/2016/01/react-opti.png" />
-    <meta property="article:published_time" content="2016-01-14T20:30:03.711Z" />
-    <meta property="article:modified_time" content="2016-01-14T20:30:03.708Z" />
-    <meta property="article:tag" content="MV*" />
-    <meta property="article:tag" content="React" />
+    <meta property="og:title" content="Child Processes in Node" />
+    <meta property="og:description" content="Recently, I ran into an issue with a Node application that (unfortunately) necessitated the use of a large chunk of blocking, long-running code, as well as a means to cut off execution if it was taking too long. Naturally, I..." />
+    <meta property="og:url" content="http://martinms-usc.github.io/child-process/" />
+    <meta property="og:image" content="http://martinms-usc.github.io/content/images/2016/01/node.png" />
+    <meta property="article:published_time" content="2016-01-19T03:02:48.067Z" />
+    <meta property="article:modified_time" content="2016-01-19T03:02:48.065Z" />
+    <meta property="article:tag" content="Node.js" />
+    <meta property="article:tag" content="Child Process" />
+    <meta property="article:tag" content="Asynquence" />
+    <meta property="article:tag" content="Timers" />
     
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="React Lifecycle Methods Cheat Sheet" />
-    <meta name="twitter:description" content="React’s lifecycle methods give us specific points at which to tap into the ‘lifecycle’ of a component (and it’s children) and provide an organized structure in which to interact with components as they are mounted, rendered, updated, and..." />
-    <meta name="twitter:url" content="http://martinms-usc.github.io/react/" />
-    <meta name="twitter:image:src" content="http://martinms-usc.github.io/content/images/2016/01/react-opti.png" />
+    <meta name="twitter:title" content="Child Processes in Node" />
+    <meta name="twitter:description" content="Recently, I ran into an issue with a Node application that (unfortunately) necessitated the use of a large chunk of blocking, long-running code, as well as a means to cut off execution if it was taking too long. Naturally, I..." />
+    <meta name="twitter:url" content="http://martinms-usc.github.io/child-process/" />
+    <meta name="twitter:image:src" content="http://martinms-usc.github.io/content/images/2016/01/node.png" />
     
     <script type="application/ld+json">
 {
@@ -65,13 +67,13 @@
         "sameAs": null,
         "description": null
     },
-    "headline": "React Lifecycle Methods Cheat Sheet",
-    "url": "http://martinms-usc.github.io/react/",
-    "datePublished": "2016-01-14T20:30:03.711Z",
-    "dateModified": "2016-01-14T20:30:03.708Z",
-    "image": "http://martinms-usc.github.io/content/images/2016/01/react-opti.png",
-    "keywords": "MV*, React",
-    "description": "React’s lifecycle methods give us specific points at which to tap into the ‘lifecycle’ of a component (and it’s children) and provide an organized structure in which to interact with components as they are mounted, rendered, updated, and..."
+    "headline": "Child Processes in Node",
+    "url": "http://martinms-usc.github.io/child-process/",
+    "datePublished": "2016-01-19T03:02:48.067Z",
+    "dateModified": "2016-01-19T03:02:48.065Z",
+    "image": "http://martinms-usc.github.io/content/images/2016/01/node.png",
+    "keywords": "Node.js, Child Process, Asynquence, Timers",
+    "description": "Recently, I ran into an issue with a Node application that (unfortunately) necessitated the use of a large chunk of blocking, long-running code, as well as a means to cut off execution if it was taking too long. Naturally, I..."
 }
     </script>
 
@@ -81,7 +83,7 @@
 var posts_headline = 'The Silicon Swell Report';
 </script>
   </head>
-  <body class="post-template tag-mv tag-react">
+  <body class="post-template tag-node-js tag-child-process tag-asynquence tag-timers">
     <header id="menu-button" class="expanded">
       <a><i class="icon icon-list"></i></a>
     </header>
@@ -167,73 +169,101 @@ var posts_headline = 'The Silicon Swell Report';
       <section class="content">
         
 
-  <article class="post tag-mv tag-react">
+  <article class="post tag-node-js tag-child-process tag-asynquence tag-timers">
     <header>
       <div class="post meta">
-        <time datetime="14 Jan 2016">14 Jan 2016</time>
-        <span class="post tags">in <a href="../tag/mv/index.html">MV*</a> <a href="../tag/react/index.html">React</a></span>
+        <time datetime="18 Jan 2016">18 Jan 2016</time>
+        <span class="post tags">in <a href="../tag/node-js/index.html">Node.js</a> <a href="../tag/child-process/index.html">Child Process</a> <a href="../tag/asynquence/index.html">Asynquence</a> <a href="../tag/timers/index.html">Timers</a></span>
 
 
         <span class="post reading-time"> ~ <span></span> read.</span>
       </div>
-      <a alt="Tweet 'React Lifecycle Methods Cheat Sheet'" href="https://twitter.com/intent/tweet?text=React%20Lifecycle%20Methods%20Cheat%20Sheet%20%C2%BB&amp;hashtags=MV*,React&amp;url=http://martinms-usc.github.io/react/">
-        <img id="post-image" src="../content/images/2016/01/react-opti.png" alt="React Lifecycle Methods Cheat Sheet">
-        <h1 class="icon-reverse icon-social-twitter-post" id="post-title">React Lifecycle Methods Cheat Sheet</h1>
+      <a alt="Tweet 'Child Processes in Node'" href="https://twitter.com/intent/tweet?text=Child%20Processes%20in%20Node%20%C2%BB&amp;hashtags=Node.js,Child Process,Asynquence,Timers&amp;url=http://martinms-usc.github.io/child-process/">
+        <img id="post-image" src="../content/images/2016/01/node.png" alt="Child Processes in Node">
+        <h1 class="icon-reverse icon-social-twitter-post" id="post-title">Child Processes in Node</h1>
       </a>
     </header>
 
-    <div id="post-content" class="post tag-mv tag-react">
-      <p>React’s lifecycle methods give us specific points at which to tap into the ‘lifecycle’ of a component (and it’s children) and provide an organized structure in which to interact with components as they are mounted, rendered, updated, and unmounted as state changes. </p>
+    <div id="post-content" class="post tag-node-js tag-child-process tag-asynquence tag-timers">
+      <p>Recently, I ran into an issue with a Node application that (unfortunately) necessitated the use of a large chunk of blocking, long-running code, as well as a means to cut off execution if it was taking too long. Naturally, I started with attempting a simple solution, using Node’s Timers module to solve the problem. I created a new branch and refactored the module with one main timer to schedule a ‘timeout’ event as well as a mechanism to yield to the event loop at specified points to see if the ‘timeout’ event had occurred. </p>
 
-<p>This post is intended to be a quick guide into the component lifecycle methods for easy reference. They are listed in the order which they are invoked. </p>
+<p>The problem was, the callbacks scheduled by timers don’t actually execute when the delay completes, as I expected. Those callbacks actually end up in the ‘task queue’, and the event loop will wait for the stack to be clear before moving an action from the task queue onto the stack. This means that the callback in a Node timer has no ability to interrupt a full stack of function calls from the piece of long-running code. </p>
 
-<hr />
+<p><img src="../content/images/2016/01/1-hXAJf8hFtof1ITYZ2_wiJA.png" alt="" />
+(Image from Philip Robert’s <a href="https://vimeo.com/96425312">“Help, Help, I’m stuck in an event-loop”</a>.)</p>
 
-<h2 id="componentwillmount"><code>componentWillMount( )</code></h2>
+<p>My next attempt at a solution was to utilize <a href="https://github.com/getify/asynquence">Asynquence</a>, Kyle Simpson's promise-style library built to accomplish sequences of tasks. This library has an interesting feature, called <code>gates</code>, that allow you to wait for multiple segments to complete before moving on to the next step in the sequence. Example here:</p>
 
-<p>Invoked once on client and server before the initial rendering occurs (before <code>component.render</code> is called). Load initial data here with an AJAX call.</p>
+<pre><code>ASQ("message")
+.gate(
+function(done,msg){
+  setTimeout(function() {
+      done(msg + " 1");
+  },200);
+},
+function(done,msg){
+  setTimeout(function() {
+      done(msg + " 2");
+  },10);
+})
+.val(function(msg1,msg2) {
+  msg1; // "message 1"
+  msg2; // "message 2"
+}); 
+</code></pre>
 
-<h2 id="componentrender"><code>component.render( )</code></h2>
+<p>One special variation of the gate-step is the <code>first(...)</code> statement that will proceed to the main sequence upon completion of any parallel segment. It seemed perfect for my uses, but unfortunately, after refactors and testing, it became apparent during a chat with Kyle via Twitter that the long-running code was blocking execution of the other segments, which prohibited the timer callback from cutting in, similar to with timers.</p>
 
-<p>Every component requires a render method. This is a 'pure' method, meaning that it will return the same result every time it is invoked. </p>
+<p>My final (and successful) attempt at a solution was to use Node's Child Process module. Child Processes are very powerful, and can be a means to <code>spawn</code> a new Node process, i.e. another instance of <a href="https://developers.google.com/v8/?hl=en">V8</a>. Child processes can be as insulated from or as integrated with the main Node process as is required by your needs, and have a very simple <code>child.kill()</code> syntax to end a child process.</p>
 
-<p>The render method exclusively examines <code>this.props</code> and <code>this.state</code> and must return a single child element, <code>null</code>, or <code>false</code> if nothing should be rendered. If it is being called in a parent component, the children can be placed within a it’s opening and closing tags, e.g.  <code>{this.props.children}</code>. </p>
+<p>There are various methods to create a child process synchronously and asynchronously, giving you the option to execute commands or entire files. I found that <code>child_process.fork(modulePath, [arguments], [options])</code> matched my needs nicely. It allowed me to utilize the parent working directory (<code>process.cwd()</code>) as the current directory, to retain proper paths for all of the necessary I/O operations in the blocking code. It also has a built in method of communication between processes:</p>
 
-<p>It doesn’t read from or write to the DOM, interact with the browser, or modify component state. </p>
+<pre><code>// in parent: 
+child.send('This is your message!')
 
-<h2 id="componentdidmount"><code>componentDidMount( )</code></h2>
+// in child: 
+process.on('message', function(msg) {
+   // do something...
+}
+</code></pre>
 
-<p>Invoked only on the client after rendering has completed. This method has access to a component’s children (and their DOM representation) and you can can use setTimeout, events, or AJAX calls here. </p>
+<p>After one final refactor, this method worked. Amidst a fragile chain of promises in my Express app, I was able to build a child process using a long-running module, flexibly tell it when to start execution, and cut it off after a period of a few seconds. The initiated child process  Check out the sanitized code below:</p>
 
-<h2 id="componentwillreceivepropsnextprops"><code>componentWillReceiveProps( nextProps )</code></h2>
+<p>Initiate child process:</p>
 
-<p>Invoked when a component is receiving new props. This is an opportunity to react to prop transitions. This method may or may not cause a state change using this.setState( { prop: value } ).</p>
+<pre><code>var pwd = process.cwd();
+var child = child_process.fork(__dirname + '/slowModule.js', {cwd: pwd});
+</code></pre>
 
-<h2 id="shouldcomponentupdatenewpropsnewstate"><code>shouldComponentUpdate( {newProps}, {newState} )</code></h2>
+<p>Set the timer to cut off child process after 5s:</p>
 
-<p>If new props/state is being received by a component, this method is invoked before render happens. Returns <code>true</code> by default, return <code>false</code> to skip render.  If it returns <code>true</code>, the rest of the lifecycle methods below will be invoked.</p>
+<pre><code>var mainTimer = setTimeout(function() {
+  child.kill('SIGINT'); 
+  // SIGINT is default kill signal
+}, 5000);
+</code></pre>
 
-<h2 id="componentwillupdatenextpropsnextstate"><code>componentWillUpdate( {nextProps}, {nextState} )</code></h2>
+<p>Send message to child process after an I/O task:</p>
 
-<p>Invoked immediately before render as an opportunity to prepare for update. You <strong>cannot</strong> use <code>this.setState()</code> here. Use <code>componentWillReceiveProps</code> instead. </p>
+<pre><code>fs.writeFile('path/to/file.txt', param, function(err) {
+  if (err) // handle error
+  child.send('GO');
+});
+</code></pre>
 
-<h2 id="componentdidupdateprevpropsprevstate"><code>componentDidUpdate( {prevProps}, {prevState} )</code></h2>
+<p>Listen for the results of the long-running code:</p>
 
-<p>Invoked after component’s state changes and updates are applied to the DOM. It is acceptable to operate on the DOM here. </p>
+<pre><code>child.stdout.on('data', function(data) {
+  console.log('child process complete, results: ' + data);
+});
+</code></pre>
 
-<h2 id="componentwillunmount"><code>componentWillUnmount( )</code></h2>
-
-<p>Before a component is unmounted, this method is called. Any necessary cleanup goes here (e.g. invalidating timers, changing DOM elements, etc.). </p>
-
-<p>And that’s it! It seems like a lot for simple changes in state, but each of these methods correspond to a specific point during the lifecycle of a component and allow maximum control over the rendering of that component. It will probably not be necessary to customize and utilize each one of these methods for each component, but the option is there. </p>
-
-<p>Happy Reacting!</p>
+<p>After much trial and error, this proved to be a perfect way to solve my original problem. By isolating execution of a block of long- (or maybe indefinitely-) running code in a new instance of V8/Node, I was able to control execution with ease without it affecting my Node/Express server. </p>
     </div>
 
     <div class="post related">
-        <a rel="prev" id="prev-btn" class="btn small square" href="../backbone/index.html">← Backbone is a Dirty Diaper</a>
+        <a rel="prev" id="prev-btn" class="btn small square" href="../react-tips-and-tricks/index.html">← React Tips and Tricks</a>
 
-        <a rel="next" id="next-btn" class="btn small square" href="../react-tips-and-tricks/index.html">React Tips and Tricks →</a>
     </div>
 
     <footer class="post comments">
